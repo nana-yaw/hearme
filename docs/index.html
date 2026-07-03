@@ -166,7 +166,10 @@
   .tip-btc { margin-top: 30px; display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
   .tip-btc .qr { width: 122px; height: 122px; flex: none; background: #fff; padding: 10px; border-radius: 12px; box-sizing: content-box; }
   .btc-meta { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; min-width: 0; }
-  .btc-label { color: var(--ink-soft); font-size: 0.88rem; }
+  .btc-label { color: var(--ink-soft); font-size: 0.88rem; display: inline-flex; align-items: center; gap: 8px; }
+  .btc-label svg { width: 1.3em; height: 1.3em; fill: var(--pink); flex: none; }
+  .btn.wise { display: inline-flex; align-items: center; gap: 10px; }
+  .btn.wise svg { width: 1.2em; height: 1.2em; fill: currentColor; flex: none; }
   .copy {
     font-family: var(--body); font-size: 0.85rem; color: var(--ink); cursor: pointer;
     background: none; border: 1px solid var(--line); border-radius: 8px; padding: 5px 14px;
@@ -354,13 +357,17 @@
   <p class="prose">HearMe is free and stays free. If it replaces a subscription for you,
   a coffee-sized tip says thanks — by card or bank via Wise, or in Bitcoin.</p>
   <div class="cta">
-    <a class="btn" href="https://wise.com/pay/me/edwardo481">Tip via Wise</a>
+    <a class="btn wise" href="https://wise.com/pay/me/edwardo481">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.488 7.469 0 15.05h11.585l1.301-3.576H7.922l3.033-3.507.01-.092L8.993 4.48h8.873l-6.878 18.925h4.706L24 .595H2.543l3.945 6.874Z"/></svg>
+      Tip via Wise</a>
   </div>
   <div class="tip-btc">
     <svg class="qr" viewBox="0 0 41 41" shape-rendering="crispEdges" role="img"
       aria-label="QR code for the Bitcoin address below"><path fill="#ffffff" d="M0 0h41v41H0z"/><path stroke="#000000" d="M4 4.5h7m2 0h1m2 0h2m1 0h3m1 0h2m1 0h2m2 0h7M4 5.5h1m5 0h1m1 0h5m1 0h3m1 0h2m2 0h2m2 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m6 0h3m1 0h2m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h2m1 0h7m1 0h1m1 0h1m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h1m1 0h6m2 0h2m2 0h1m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h1m2 0h4m1 0h3m1 0h1M4 12.5h1m1 0h1m1 0h1m1 0h1m4 0h1m1 0h1m3 0h2m2 0h1m1 0h2m3 0h1m2 0h1M5 13.5h1m5 0h1m1 0h2m2 0h1m3 0h2m5 0h1m1 0h2m1 0h2m1 0h1M6 14.5h1m1 0h5m5 0h1m3 0h1m3 0h1m2 0h2m2 0h4M7 15.5h2m2 0h1m1 0h1m1 0h5m1 0h2m1 0h2m1 0h1m2 0h1m1 0h1m2 0h2M5 16.5h1m1 0h1m2 0h1m1 0h2m4 0h1m1 0h1m1 0h1m1 0h3m2 0h3m1 0h1m2 0h1M5 17.5h1m2 0h1m2 0h5m1 0h8m1 0h1m1 0h3m2 0h4M5 18.5h2m1 0h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h2m1 0h1m1 0h1m6 0h2M9 19.5h1m2 0h1m1 0h2m1 0h1m2 0h3m1 0h2m3 0h3m1 0h1m1 0h2M8 20.5h1m1 0h4m2 0h1m1 0h4m1 0h1m1 0h1m3 0h2m2 0h1m2 0h1M6 21.5h3m4 0h2m2 0h1m2 0h1m4 0h1m2 0h3m5 0h1M6 22.5h1m2 0h4m1 0h3m1 0h1m1 0h2m7 0h1m1 0h2m1 0h3M4 23.5h1m1 0h3m2 0h1m2 0h1m2 0h4m3 0h4m1 0h4M4 24.5h2m4 0h2m2 0h3m7 0h2m3 0h3m4 0h1M5 25.5h1m2 0h2m2 0h1m1 0h3m1 0h2m3 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h2M4 26.5h1m2 0h4m2 0h2m2 0h2m5 0h2m2 0h1m1 0h1m1 0h1m2 0h2M5 27.5h1m1 0h1m3 0h1m1 0h3m1 0h3m1 0h2m2 0h6m4 0h2M4 28.5h1m1 0h1m1 0h1m1 0h1m2 0h3m1 0h2m1 0h2m1 0h1m1 0h1m2 0h5m3 0h1M12 29.5h2m4 0h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h2m1 0h2M4 30.5h7m2 0h4m1 0h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h2m1 0h2M4 31.5h1m5 0h1m3 0h2m2 0h2m1 0h8m3 0h1m2 0h2M4 32.5h1m1 0h3m1 0h1m1 0h5m1 0h3m1 0h1m2 0h1m2 0h5M4 33.5h1m1 0h3m1 0h1m3 0h1m2 0h6m1 0h3m1 0h1m2 0h2m1 0h1m1 0h1M4 34.5h1m1 0h3m1 0h1m1 0h2m5 0h2m3 0h1m3 0h1m2 0h2m3 0h1M4 35.5h1m5 0h1m3 0h4m2 0h3m2 0h2m1 0h3m1 0h1m2 0h1M4 36.5h7m1 0h2m1 0h1m3 0h1m1 0h1m1 0h3m1 0h2m2 0h1m3 0h2"/></svg>
     <div class="btc-meta">
-      <span class="btc-label">or Bitcoin — SegWit</span>
+      <span class="btc-label">
+        <svg viewBox="0 0 512 512" aria-hidden="true"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zm-141.651-35.33c4.937-32.999-20.191-50.739-54.55-62.573l11.146-44.702-27.213-6.781-10.851 43.524c-7.154-1.783-14.502-3.464-21.803-5.13l10.929-43.81-27.198-6.781-11.153 44.686c-5.922-1.349-11.735-2.682-17.377-4.084l.031-.14-37.53-9.37-7.239 29.062s20.191 4.627 19.765 4.913c11.022 2.751 13.014 10.044 12.68 15.825l-12.696 50.925c.76.194 1.744.473 2.829.907-.907-.225-1.876-.473-2.876-.713l-17.796 71.338c-1.349 3.348-4.767 8.37-12.471 6.464.271.395-19.78-4.937-19.78-4.937l-13.51 31.147 35.414 8.827c6.588 1.651 13.045 3.379 19.4 5.006l-11.262 45.213 27.182 6.781 11.153-44.733a1038.209 1038.209 0 0 0 21.687 5.627l-11.115 44.523 27.213 6.781 11.262-45.128c46.404 8.781 81.299 5.239 95.986-36.727 11.836-33.79-.589-53.281-25.004-65.991 17.78-4.098 31.174-15.792 34.747-39.949zm-62.177 87.179c-8.41 33.79-65.308 15.523-83.755 10.943l14.944-59.899c18.446 4.603 77.6 13.717 68.811 48.956zm8.417-87.667c-7.673 30.736-55.031 15.12-70.393 11.292l13.548-54.327c15.363 3.828 64.836 10.973 56.845 43.035z"/></svg>
+        Bitcoin — SegWit</span>
       <code class="addr" id="btc-addr">bc1qnjhgudw7837muxda75jarz2nd2wnztrzfh5mzz</code>
       <button class="copy" id="btc-copy" type="button">Copy address</button>
     </div>
