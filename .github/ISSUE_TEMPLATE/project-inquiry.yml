@@ -1,0 +1,51 @@
+name: "💼 Project inquiry"
+description: Want something built — a tool, an automation, a product? Tell me enough to reply usefully.
+title: "Project inquiry: "
+labels: ["inquiry"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reaching out. The required fields below are the anti-spam gate —
+        inquiries that don't fill them get closed without a reply.
+  - type: textarea
+    id: what
+    attributes:
+      label: What do you want built?
+      description: The problem and the outcome you want, in plain words. Links welcome.
+      placeholder: e.g. "A private dictation tool like HearMe, but tuned for medical notes at our clinic…"
+    validations:
+      required: true
+  - type: input
+    id: timeline
+    attributes:
+      label: Timeline
+      placeholder: e.g. "MVP in 4–6 weeks"
+    validations:
+      required: true
+  - type: dropdown
+    id: budget
+    attributes:
+      label: Budget range (USD)
+      options:
+        - Under $1,000
+        - $1,000 – $5,000
+        - $5,000 – $15,000
+        - $15,000+
+        - Not sure yet — advise me
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: How do I reach you?
+      description: Email, LinkedIn, or a company page. Used only to reply to this inquiry.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: How did you find HearMe?
+      placeholder: e.g. GitHub search, a friend, Reddit
+    validations:
+      required: false
