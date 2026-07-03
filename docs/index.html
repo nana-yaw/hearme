@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HearMe — private dictation that learns your voice</title>
+<meta name="description" content="Free, open-source macOS dictation. 100% local — your voice never leaves your machine. Benchmarks every model on YOUR voice and accent, then picks the best one." />
+<style>
+  :root {
+    --bg: #16121a;
+    --surface: #211a27;
+    --text: #f3edf5;
+    --muted: #b3a8ba;
+    --accent: #faa2ca;
+    --accent-strong: #da5893;
+    --border: #3a2f42;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 72px 0 40px; text-align: center; }
+  .mark { width: 72px; height: 72px; margin: 0 auto 20px; display: block; }
+  h1 { font-size: 2.6rem; letter-spacing: -0.02em; }
+  h1 .hear { color: var(--accent); }
+  .tagline { font-size: 1.25rem; color: var(--muted); margin: 12px auto 0; max-width: 560px; }
+  .cta-row { margin: 32px 0 8px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 12px 28px; border-radius: 12px;
+    font-weight: 600; text-decoration: none; font-size: 1.05rem;
+  }
+  .btn-primary { background: var(--accent-strong); color: #fff; }
+  .btn-primary:hover { background: #c44a82; }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); }
+  .fineprint { color: var(--muted); font-size: 0.85rem; margin-top: 10px; }
+  section { padding: 40px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: 1.5rem; margin-bottom: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px;
+  }
+  .card h3 { font-size: 1.05rem; margin-bottom: 6px; color: var(--accent); }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+  .proof {
+    background: var(--surface); border-left: 3px solid var(--accent-strong);
+    border-radius: 0 12px 12px 0; padding: 16px 20px; margin-top: 8px;
+  }
+  .proof code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.88rem; color: var(--accent);
+  }
+  .proof p { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+  .story { color: var(--muted); max-width: 640px; }
+  .story strong { color: var(--text); }
+  .tip { text-align: center; }
+  .tip .addr {
+    display: inline-block; margin-top: 14px; padding: 10px 16px;
+    background: var(--surface); border: 1px dashed var(--border); border-radius: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem;
+    word-break: break-all; max-width: 100%; color: var(--accent);
+  }
+  .tip .qr { margin: 18px auto 0; width: 150px; height: 150px; }
+  footer { padding: 36px 0 56px; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 0.9rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .badge {
+    display: inline-block; margin-top: 14px; padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--border); color: var(--muted); font-size: 0.85rem;
+  }
+  .badge b { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <!-- HearMe listening mark: dot + sound arcs -->
+  <svg class="mark" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="24" cy="36" r="7" fill="#faa2ca"/>
+    <path d="M36 22 a17 17 0 0 1 0 28" fill="none" stroke="#faa2ca" stroke-width="5" stroke-linecap="round"/>
+    <path d="M46 14 a29 29 0 0 1 0 44" fill="none" stroke="#da5893" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+  <h1><span class="hear">Hear</span>Me</h1>
+  <p class="tagline">Private dictation for macOS that finds the model that hears <em>your</em> voice best — and never sends a byte anywhere.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://github.com/nana-yaw/hearme/releases/latest">Download for macOS</a>
+    <a class="btn btn-ghost" href="https://github.com/nana-yaw/hearme">View source</a>
+  </div>
+  <p class="fineprint">Free &amp; open source · Apple Silicon · unsigned build: right-click → Open on first launch</p>
+</header>
+
+<section class="wrap">
+  <h2>Why it exists</h2>
+  <p class="story">
+    Mainstream speech models are benchmarked on American and European voices. On West-African-accented
+    English, the model that tops the leaderboards silently dropped <strong>60–80% of the words</strong> in
+    our tests — while another transcribed near-verbatim. You can't know which model fits your voice from a
+    chart. <strong>So HearMe measures it:</strong> read three short phrases once, and every model on your
+    machine is scored on accuracy and speed against <em>your</em> voice, your microphone, your accent.
+    One click applies the winner.
+  </p>
+</section>
+
+<section class="wrap">
+  <h2>What it does</h2>
+  <div class="grid">
+    <div class="card"><h3>Dictate anywhere</h3><p>Hold a hotkey, speak, release — text appears at your cursor in any app. Live typing (experimental) shows words while you speak.</p></div>
+    <div class="card"><h3>Voice setup wizard</h3><p>Benchmarks every downloaded model on your own voice — word-error-rate and speed — and recommends the best fit.</p></div>
+    <div class="card"><h3>100% local</h3><p>Whisper &amp; friends run on-device (Metal). No account, no cloud, no telemetry. Works offline forever.</p></div>
+    <div class="card"><h3>Command mode</h3><p>Highlight text, hold the shortcut, say "make this more formal" — a local LLM (Ollama) rewrites it in place.</p></div>
+    <div class="card"><h3>Custom words</h3><p>Names and jargon spelled right — with one-click suggestions mined from your own dictation history.</p></div>
+    <div class="card"><h3>Spoken punctuation</h3><p>"Period", "comma", "new line" become symbols instantly — deterministic, no LLM latency.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Don't trust — verify</h2>
+  <div class="proof">
+    <code>lsof -i -a -p $(pgrep -x handy)</code>
+    <p>Run this while dictating: zero open network connections. The only network use is a one-time,
+    checksum-pinned model download you trigger yourself. Cloud providers aren't disabled — they're
+    removed from the code.</p>
+  </div>
+</section>
+
+<!-- TIP JAR — hidden until a real address is set. To enable: replace
+     BTC_ADDRESS_PLACEHOLDER below with the address, drop in the QR SVG,
+     and remove style="display:none". -->
+<section class="wrap tip" id="tip" style="display:none">
+  <h2>Fuel the next feature</h2>
+  <p class="story" style="margin:0 auto">HearMe is free and stays free. If it saves you a subscription,
+  a coffee-sized tip via Bitcoin is appreciated — no account, no middleman.</p>
+  <div class="addr">BTC_ADDRESS_PLACEHOLDER</div>
+  <div class="qr"><!-- QR SVG goes here --></div>
+</section>
+
+<footer class="wrap">
+  <p>MIT licensed. A hardened fork of <a href="https://github.com/cjpais/Handy">Handy</a> by CJ Pais —
+  thank you for the excellent foundation.</p>
+  <p class="badge">Built end-to-end with <b>Claude Fable 5</b> (Anthropic) — research, code, reviews, and this page.</p>
+</footer>
+</body>
+</html>

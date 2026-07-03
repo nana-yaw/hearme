@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.hearme.hotkey-doctor</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/python3</string>
+        <string>__SCRIPT_PATH__</string>
+    </array>
+    <!-- Backstop: runs at every login; the script exits instantly unless the
+         macOS version changed since its last recorded run. -->
+    <key>RunAtLoad</key>
+    <true/>
+    <!-- Fires when a macOS update rewrites the system version file. -->
+    <key>WatchPaths</key>
+    <array>
+        <string>/System/Library/CoreServices/SystemVersion.plist</string>
+    </array>
+    <key>StandardOutPath</key>
+    <string>__HOME__/Library/Logs/com.pais.handy/hotkey-doctor-launchd.log</string>
+    <key>StandardErrorPath</key>
+    <string>__HOME__/Library/Logs/com.pais.handy/hotkey-doctor-launchd.log</string>
+</dict>
+</plist>
