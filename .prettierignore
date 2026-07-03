@@ -16,6 +16,9 @@ src-tauri/gen
 src/bindings.ts
 src-tauri/src/catalog/catalog.json
 
+# Hand-tuned single-file landing page (whitespace-sensitive inline demo markup)
+docs/index.html
+
 # Misc
 .DS_Store
 *.log
