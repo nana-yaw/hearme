@@ -69,6 +69,10 @@
   .platforms b { color: var(--ink); font-weight: 600; }
   .dl-stats { margin-top: 6px; color: var(--ink-soft); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
   .dl-stats b { color: var(--ink); font-weight: 600; }
+  .shots { margin-top: 34px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .shots figure { margin: 0; }
+  .shots img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 12px; }
+  .shots figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.88rem; max-width: 48ch; }
 
   /* the demo: waveform + transcript, the product doing the thing */
   .demo {
@@ -273,6 +277,32 @@
       <li>Self-healing hotkey after macOS updates</li>
       <li>Your accent color, everywhere</li>
     </ul>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>No mockups — this is the app.</h2>
+  <div class="shots">
+    <figure>
+      <img src="assets/models.png" width="1342" height="1126" loading="lazy"
+        alt="HearMe Models page: Whisper Turbo active, marked best for accented English — winner of the live accent A/B on this machine">
+      <figcaption>Every model carries a verdict earned on <em>this machine's</em> voice — not copied from a leaderboard.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/wizard.png" width="1342" height="1126" loading="lazy"
+        alt="Voice setup wizard: read three phrases aloud and every selected model is scored on your voice, your microphone, and your accent">
+      <figcaption>Voice setup: three phrases in, one recommended model out.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/general.png" width="1342" height="1126" loading="lazy"
+        alt="General settings: transcribe shortcut, push to talk, spoken punctuation, language and microphone">
+      <figcaption>Push to talk, spoken punctuation — and your accent color on every control.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/advanced.png" width="1342" height="1126" loading="lazy"
+        alt="Advanced settings: overlay, model unloading, paste method and clipboard handling">
+      <figcaption>The knobs go deep: overlay, model unloading, paste method, clipboard handling.</figcaption>
+    </figure>
   </div>
 </section>
 
