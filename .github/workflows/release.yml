@@ -57,17 +57,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Linux rows temporarily commented out: v0.12.1 Linux assets are
-          # already attached; this dispatch re-runs Windows only. Restore after.
-          # - platform: "ubuntu-22.04" # Build .deb on 22.04
-          #   args: "--bundles deb"
-          #   target: "x86_64-unknown-linux-gnu"
-          # - platform: "ubuntu-24.04" # Build AppImage and RPM on 24.04
-          #   args: "--bundles appimage,rpm"
-          #   target: "x86_64-unknown-linux-gnu"
-          # - platform: "ubuntu-24.04-arm" # Build for ARM64 Linux
-          #   args: "--bundles appimage,deb,rpm"
-          #   target: "aarch64-unknown-linux-gnu"
+          - platform: "ubuntu-22.04" # Build .deb on 22.04
+            args: "--bundles deb"
+            target: "x86_64-unknown-linux-gnu"
+          - platform: "ubuntu-24.04" # Build AppImage and RPM on 24.04
+            args: "--bundles appimage,rpm"
+            target: "x86_64-unknown-linux-gnu"
+          - platform: "ubuntu-24.04-arm" # Build for ARM64 Linux
+            args: "--bundles appimage,deb,rpm"
+            target: "aarch64-unknown-linux-gnu"
           - platform: "windows-latest"
             args: ""
             target: "x86_64-pc-windows-msvc"
