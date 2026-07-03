@@ -6,7 +6,7 @@
 
 🌍 **[hearme — one-page site & download](https://nana-yaw.github.io/hearme/)**
 
-HearMe is a hardened, feature-extended fork of the excellent [Handy](https://github.com/cjpais/Handy) by CJ Pais. Hold a hotkey anywhere in macOS, speak, release — the transcript is typed at your cursor. Everything runs on-device.
+HearMe is a hardened, feature-extended fork of the excellent [Handy](https://github.com/cjpais/Handy) by CJ Pais. Hold a hotkey anywhere on your desktop, speak, release — the transcript is typed at your cursor. Everything runs on-device.
 
 ## Why this fork exists
 
