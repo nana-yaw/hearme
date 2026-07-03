@@ -67,6 +67,8 @@
   .src:hover { color: var(--ink); border-color: var(--pink); }
   .platforms { margin-top: 16px; color: var(--ink-soft); font-size: 0.92rem; }
   .platforms b { color: var(--ink); font-weight: 600; }
+  .dl-stats { margin-top: 6px; color: var(--ink-soft); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  .dl-stats b { color: var(--ink); font-weight: 600; }
 
   /* the demo: waveform + transcript, the product doing the thing */
   .demo {
@@ -195,7 +197,8 @@
     <a class="btn" href="https://github.com/nana-yaw/hearme/releases/latest">Download for macOS</a>
     <a class="src" href="https://github.com/nana-yaw/hearme">Read the source</a>
   </div>
-  <p class="platforms"><b>macOS</b> (Apple silicon) today · Windows &amp; Linux builds are in the works · free, MIT</p>
+  <p class="platforms" id="platforms"><b>macOS</b> (Apple silicon) · <b>Linux</b> beta — .deb / .rpm / AppImage · <b>Windows</b> beta — x64 &amp; ARM64 · free, MIT</p>
+  <p class="dl-stats" id="dl-stats" hidden></p>
 
   <div class="demo" aria-label="HearMe transcribing speech, live">
     <div class="wave" aria-hidden="true">
@@ -216,6 +219,10 @@
   West-African-accented English, the chart-topper didn't error, didn't warn — it just
   <strong>silently dropped six words in every ten</strong>. Another model, further down the
   same chart, was near-verbatim.</p>
+  <p class="prose">That's not one laptop's bad luck. Stanford measured
+  <a href="https://www.pnas.org/doi/10.1073/pnas.1915768117">nearly double the error rate</a>
+  for Black speakers across five major vendors — the headline numbers are earned on
+  U.S. benchmark audio, not on voices like these.</p>
   <p class="pull">You can't see that on a leaderboard. You can only <b>hear</b> it — on your own voice.</p>
 </section>
 
@@ -223,7 +230,9 @@
   <h2>So the app runs the test for you.</h2>
   <p class="prose"><strong>Voice setup</strong>, built in: read three short phrases once —
   the third is made of your own names and jargon — and every model on your machine is
-  scored on accuracy and speed against <em>your</em> recording. One click applies the winner.</p>
+  scored on accuracy and speed against <em>your</em> recording. One click applies the winner.
+  As far as we can find, no other dictation app measures this — the rest hand you a model
+  menu and wish you luck.</p>
 
   <div class="bench" role="img" aria-label="Voice setup results: Whisper Turbo recommended at 96 percent accuracy; Canary 74 percent; Parakeet 31 percent">
     <div class="row win"><span class="model">Whisper Turbo</span><span class="stat">96% accuracy</span><span class="stat">8.4× speed</span></div>
@@ -274,6 +283,16 @@
   trigger once, checksum-pinned. Run this while dictating:</p>
   <div class="term"><span class="ps1">$</span> lsof -i -a -p $(pgrep -x handy)
 <span class="out">(no output — zero open connections)</span></div>
+</section>
+
+<section class="wrap" id="hire">
+  <h2>Want something built like this?</h2>
+  <p class="prose">HearMe went from fork to shipped, adversarially-reviewed product by
+  one developer pairing with <strong>Claude Fable 5</strong> — spec, code, reviews, docs,
+  this page. I take on a small number of client builds: internal tools, automations,
+  software that has to keep your data yours.
+  <a href="https://github.com/nana-yaw/hearme/issues/new?title=Project+inquiry">Open a
+  project inquiry</a><span id="hire-mail"></span>.</p>
 </section>
 
 <!-- TIP JAR — hidden until a real receiving address is set. To enable:
@@ -327,6 +346,78 @@
       })();
     }
     setTimeout(play, 900);
+  })();
+
+  // Download stats + platform links, from the GitHub Releases API. Fails
+  // silent: the static line above stands and the stats row stays hidden.
+  (function () {
+    var API = "https://api.github.com/repos/nana-yaw/hearme/releases?per_page=20";
+    var KEY = "hearme-dl-v1";
+    function classify(name) {
+      var n = name.toLowerCase();
+      if (n.slice(-4) === ".dmg") return "macOS";
+      if (n.slice(-4) === ".exe" || n.slice(-4) === ".msi") return "Windows";
+      if (n.slice(-4) === ".deb" || n.slice(-4) === ".rpm" || n.slice(-9) === ".appimage") return "Linux";
+      return null; // signatures, manifests, checksums don't count
+    }
+    function render(assets) {
+      var per = { macOS: 0, Windows: 0, Linux: 0 };
+      var present = { macOS: false, Windows: false, Linux: false };
+      var total = 0;
+      assets.forEach(function (a) {
+        var p = classify(a.name);
+        if (!p) return;
+        present[p] = true;
+        per[p] += a.count;
+        total += a.count;
+      });
+      if (present.Windows) {
+        document.getElementById("platforms").innerHTML =
+          "<b>macOS</b> (Apple silicon) · <b>Linux</b> beta — .deb / .rpm / AppImage · " +
+          "<b>Windows</b> beta — x64 &amp; ARM64 · free, MIT";
+      }
+      if (total > 0) {
+        var parts = [];
+        ["macOS", "Windows", "Linux"].forEach(function (p) {
+          if (present[p]) parts.push(per[p].toLocaleString() + " " + p);
+        });
+        var el = document.getElementById("dl-stats");
+        el.innerHTML = "<b>" + total.toLocaleString() + "</b> downloads — " + parts.join(" · ");
+        el.hidden = false;
+      }
+    }
+    try {
+      var cached = JSON.parse(sessionStorage.getItem(KEY) || "null");
+      if (cached && Date.now() - cached.t < 36e5) return render(cached.assets);
+    } catch (e) {}
+    fetch(API, { headers: { Accept: "application/vnd.github+json" } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (releases) {
+        var assets = [];
+        releases.forEach(function (rel) {
+          (rel.assets || []).forEach(function (a) {
+            assets.push({ name: a.name, count: a.download_count || 0 });
+          });
+        });
+        try { sessionStorage.setItem(KEY, JSON.stringify({ t: Date.now(), assets: assets })); } catch (e) {}
+        render(assets);
+      })
+      .catch(function () {});
+  })();
+
+  // Contact email for the hire section, assembled at runtime so the address
+  // never sits in the HTML for scrapers. To enable, set MAIL to
+  // ["localpart", "domain.tld"] — e.g. ["build", "example.com"].
+  (function () {
+    var MAIL = null;
+    if (!MAIL) return;
+    var addr = MAIL[0] + "@" + MAIL[1];
+    var span = document.getElementById("hire-mail");
+    span.appendChild(document.createTextNode(" or email "));
+    var a = document.createElement("a");
+    a.href = "mailto:" + addr;
+    a.textContent = addr;
+    span.appendChild(a);
   })();
 </script>
 </body>

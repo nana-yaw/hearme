@@ -1,6 +1,8 @@
 # HearMe
 
-**Private dictation for macOS that finds the model that hears *your* voice best — and never sends a byte anywhere.**
+![Downloads](https://img.shields.io/github/downloads/nana-yaw/hearme/total) ![License](https://img.shields.io/github/license/nana-yaw/hearme)
+
+**Private dictation that finds the model that hears _your_ voice best — and never sends a byte anywhere.**
 
 🌍 **[hearme — one-page site & download](https://nana-yaw.github.io/hearme/)**
 
@@ -8,7 +10,7 @@ HearMe is a hardened, feature-extended fork of the excellent [Handy](https://git
 
 ## Why this fork exists
 
-Mainstream speech models are benchmarked on American and European voices. On West-African-accented English, the model topping the public leaderboards silently dropped **60–80% of the words** in live tests, while another transcribed near-verbatim. You can't see that on a leaderboard — so HearMe measures it: the **voice-setup wizard** has you read three short phrases once, scores every model on your machine against *your* voice (word error rate + speed), and applies the winner in one click.
+Mainstream speech models are benchmarked on American and European voices. On West-African-accented English, the model topping the public leaderboards silently dropped **60–80% of the words** in live tests, while another transcribed near-verbatim. You can't see that on a leaderboard — so HearMe measures it: the **voice-setup wizard** has you read three short phrases once, scores every model on your machine against _your_ voice (word error rate + speed), and applies the winner in one click.
 
 ## What the fork adds over upstream
 
@@ -24,7 +26,13 @@ Full list: [docs/FEATURES.md](docs/FEATURES.md) · release history: [docs/CHANGE
 
 ## Install
 
-Grab the `.dmg` from [Releases](https://github.com/nana-yaw/hearme/releases/latest), drag to Applications. The build is unsigned: **right-click → Open** on first launch, then grant Microphone, Accessibility, and Input Monitoring when prompted. Building from source: [docs/INSTALL.md](docs/INSTALL.md).
+**macOS** (Apple Silicon, the tested platform): grab the `.dmg` from [Releases](https://github.com/nana-yaw/hearme/releases/latest), drag to Applications. The build is unsigned: **right-click → Open** on first launch, then grant Microphone, Accessibility, and Input Monitoring when prompted.
+
+**Windows (beta)**: `..._x64-setup.exe` (Intel/AMD) or `..._arm64-setup.exe` (ARM). Unsigned — SmartScreen will warn: "More info" → "Run anyway".
+
+**Linux (beta)**: `.deb`, `.rpm`, or `.AppImage` from the same release, in `amd64` and `arm64` flavors. Wayland support is limited upstream.
+
+Windows and Linux builds are CI-built from the same source but not yet hand-tested on real hardware — [issues](https://github.com/nana-yaw/hearme/issues) welcome. Building from source: [docs/INSTALL.md](docs/INSTALL.md).
 
 ## Don't trust — verify
 
