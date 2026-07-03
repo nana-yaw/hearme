@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nana-yaw.github.io/hearme/sitemap.xml
