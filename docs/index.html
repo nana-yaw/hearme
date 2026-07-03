@@ -534,7 +534,7 @@
   // never sits in the HTML for scrapers. To enable, set MAIL to
   // ["localpart", "domain.tld"] — e.g. ["build", "example.com"].
   (function () {
-    var MAIL = null;
+    var MAIL = ["edward.gracecommunity", "gmail.com"];
     if (!MAIL) return;
     var addr = MAIL[0] + "@" + MAIL[1];
     var span = document.getElementById("hire-mail");
